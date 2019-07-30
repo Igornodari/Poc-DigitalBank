@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "306536859173",
+    "firebase_url": "https://fir-app-97a53.firebaseio.com",
+    "project_id": "fir-app-97a53",
+    "storage_bucket": "fir-app-97a53.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:306536859173:android:8543e9cdb39b35dd",
+        "android_client_info": {
+          "package_name": "com.example.poceveris_beacon"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "306536859173-9pk8top2kghitalak00glc0hklm6b6er.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.poceveris_beacon",
+            "certificate_hash": "5dad77d6d0772c716b899bb50b19118bf95dc9e1"
+          }
+        },
+        {
+          "client_id": "306536859173-0k7fu0tqugsa703keb0l9phdn6rbgp5r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1S_mqF3jA853_Z08YQzXIE0jGXR_6p4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "306536859173-0k7fu0tqugsa703keb0l9phdn6rbgp5r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

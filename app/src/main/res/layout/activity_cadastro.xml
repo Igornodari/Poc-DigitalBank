@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+    <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/screen_bg"
+            android:orientation="vertical"
+            android:visibility="visible"
+            android:gravity="center_vertical">
+
+
+        <ImageView android:layout_width="165dp"
+                   android:layout_height="82dp"
+                   android:layout_marginTop="50dp"
+                   android:layout_marginStart="104.25dp"
+                   android:layout_marginBottom="20dp"
+                   android:layout_alignParentStart="true"
+                   app:srcCompat="@drawable/logo"
+                   android:scaleType="centerInside"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:textColor="@color/verdeEveri"
+                android:layout_marginStart="22.26dp"
+                android:layout_marginTop="20dp"
+                android:textSize="15sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        <EditText
+                android:id="@+id/ed_loginCadastro"
+                android:layout_width="329dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="22.26dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="22.26dp"
+                android:textSize="15sp"
+                style="@style/estilo_edit_apparence"
+                android:textCursorDrawable="@drawable/act_edt"
+                android:layout_marginBottom="20dp"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textColor="@color/verdeEveri"
+                android:layout_marginStart="20dp"
+                android:textSize="15sp"/>
+        <EditText
+                android:id="@+id/ed_emailCadastro"
+                android:layout_width="329dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="22.26dp"
+                style="@style/estilo_edit_apparence"
+                android:textCursorDrawable="@drawable/act_edt"
+                android:textSize="15sp"
+                android:layout_marginBottom="20dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Senha"
+                android:textColor="@color/verdeEveri"
+                android:layout_marginStart="22.26dp"
+                android:layout_marginTop="20dp"
+                android:textSize="15sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+        <EditText
+                android:id="@+id/ed_senhaCadastro"
+                android:layout_width="329dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="22.26dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="22.26dp"
+                android:textSize="15sp"
+                style="@style/estilo_edit_apparence"
+                android:textCursorDrawable="@drawable/act_edt"
+                android:layout_marginBottom="20dp"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Confirmar senha"
+                android:textColor="@color/verdeEveri"
+                android:layout_marginStart="22.26dp"
+                android:layout_marginTop="20dp"
+                android:textSize="15sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+        <EditText
+                android:id="@+id/ed_confirmsenha"
+                android:layout_width="329dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="22.26dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="22.26dp"
+                android:textSize="15sp"
+                android:textCursorDrawable="@drawable/act_edt"
+                style="@style/estilo_edit_apparence"
+                android:layout_marginBottom="20dp"/>
+
+
+        <android.support.constraint.ConstraintLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <Button
+                    android:id="@+id/btn_voltar"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="voltar"
+                    android:background="@drawable/act_shape"
+
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginBottom="8dp"
+
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+            <Button
+                    android:id="@+id/btn_cadastro"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Cadastrar"
+                    android:background="@drawable/act_shape"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:onClick="onClick"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="20dp"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </LinearLayout>
+</ScrollView>

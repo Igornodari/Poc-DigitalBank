@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">EverBank</string>
+    <string name="cadastroButton">Ainda não tenho cadastro</string>
+    <string name="savedata">saveData</string>
+    <string name="esqueciSenha">Esqueceu a senha?</string>
+    <string name="TitleTarefas">Que tipo de atendimento \ndeseja em nossa agencia phygital ??</string>
+    <string name="bem_vindo">Bem-vindo !!</string>
+</resources>

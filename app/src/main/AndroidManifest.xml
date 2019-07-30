@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.example.poceveris_beacon">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <application
+            android:allowBackup="true"
+            android:icon="@mipmap/everbank"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/everbank"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:supportsRtl="true">
+
+        <service
+                android:name="com.example.EverBank.service.BeaconService"
+                android:enabled="true"/>
+
+        <receiver android:name="com.example.EverBank.service.BluetoothReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT"/>
+            </intent-filter>
+        </receiver>
+
+        <activity
+                android:name="com.example.EverBank.view.RandomKeysActivity"
+                android:parentActivityName="com.example.EverBank.view.LoginActivity">
+        </activity>
+
+        <activity
+                android:name="com.example.EverBank.view.BeaconActivity"
+                android:parentActivityName="com.example.EverBank.view.LoginActivity">
+        </activity>
+
+        <activity
+                android:name="com.example.EverBank.view.ResetActivity"
+                android:parentActivityName="com.example.EverBank.view.LoginActivity">
+        </activity>
+
+        <activity
+                android:name="com.example.EverBank.view.TarefasActivity"
+                android:parentActivityName="com.example.EverBank.view.LoginActivity">
+        </activity>
+        <activity
+                android:name="com.example.EverBank.view.LoginActivity"
+                android:allowBackup="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+                android:name="com.example.EverBank.view.CadastroActivity">
+        </activity>
+
+    </application>
+
+</manifest>

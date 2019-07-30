@@ -1,0 +1,9 @@
+<resources>
+
+    <!-- Base application theme. -->
+
+    <style name="estilo_edit_apparence" parent="@android:style/Widget.EditText">
+        <item name="android:textCursorDrawable">@drawable/act_edt</item>
+    </style>
+
+</resources>
