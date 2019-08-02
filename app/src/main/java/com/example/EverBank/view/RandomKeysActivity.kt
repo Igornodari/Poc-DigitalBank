@@ -18,15 +18,20 @@ class RandomKeysActivity : AppCompatActivity() {
     private var positionExtra: Int? = null
     private var count: Int? = null
     val database = FirebaseDatabase.getInstance()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         FirebaseApp.initializeApp(this)
 
         position = getExtra("position")
         count = getExtra("count")
         init(this, position!!, count)
 
+    }
+
+    override fun onBackPressed() {
+        return
     }
 
     private fun getExtra(keyExtra: String): Int? {
@@ -62,9 +67,7 @@ class RandomKeysActivity : AppCompatActivity() {
                         }else{
                             textView?.text = "PHY${value}"
                         }
-
                     }
-
                 })
             }
 
@@ -146,6 +149,7 @@ class RandomKeysActivity : AppCompatActivity() {
 
 
             }
+
 
             4 -> {
 

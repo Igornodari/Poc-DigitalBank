@@ -11,23 +11,25 @@
 
     <TextView
             android:id="@+id/tv_bemvindo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="360dp"
+            android:layout_height="25dp"
             android:text="@string/bem_vindo"
+            android:textAlignment="center"
             android:textSize="20sp"
             android:layout_marginEnd="8dp"
+
             android:layout_marginStart="8dp"
             android:textStyle="bold"
             android:textColor="@color/verdeEveri"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="150dp"
             app:layout_constraintTop_toBottomOf="@+id/imageView3"/>
     <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="120dp"
+            android:layout_width="165dp"
+            android:layout_height="82dp"
             android:id="@+id/imageView3"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="58.26dp"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,8 +39,8 @@
 
     <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lav_android_wave_json"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="243dp"
+            android:layout_height="202dp"
             app:lottie_autoPlay="true"
             app:lottie_fileName="animation-w1920-h1440.json"
             app:lottie_loop="true"
@@ -46,7 +48,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="70dp"
             app:layout_constraintTop_toBottomOf="@+id/tv_bemvindo"/>
 
 
@@ -62,5 +64,6 @@
             android:layout_marginStart="8dp"
             android:textColor="@color/verdeEveri"
             android:textStyle="bold"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/lav_android_wave_json"/>
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/lav_android_wave_json"/>
 </android.support.constraint.ConstraintLayout>

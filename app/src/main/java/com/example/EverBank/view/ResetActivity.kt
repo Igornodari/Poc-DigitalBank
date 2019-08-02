@@ -14,7 +14,6 @@ class ResetActivity : AppCompatActivity() {
     private val email: AutoCompleteTextView? = null
     private var firebaseAuth: FirebaseAuth? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
         setContentView(R.layout.activity_reset)

@@ -8,9 +8,7 @@ open class ServiceCallback private constructor() {
 
 
     fun onSuccess() {
-        callback?.onSuccess()
-
-    }
+        callback?.onSuccess()}
 
     fun onFailure() {
         callback?.onFailure()

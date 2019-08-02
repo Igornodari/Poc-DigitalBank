@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
             android:allowBackup="true"
@@ -18,8 +17,8 @@
             android:supportsRtl="true">
 
         <service
-                android:name="com.example.EverBank.service.BeaconService"
-                android:enabled="true"/>
+            android:name="com.example.EverBank.service.BeaconService"
+            android:enabled="true"/>
 
         <receiver android:name="com.example.EverBank.service.BluetoothReceiver">
             <intent-filter>
@@ -46,6 +45,7 @@
                 android:name="com.example.EverBank.view.TarefasActivity"
                 android:parentActivityName="com.example.EverBank.view.LoginActivity">
         </activity>
+
         <activity
                 android:name="com.example.EverBank.view.LoginActivity"
                 android:allowBackup="true">

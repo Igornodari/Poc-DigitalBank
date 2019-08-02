@@ -38,6 +38,7 @@ dependencies {
     implementation 'com.estimote:sdk:1.0.12'
     implementation 'com.google.firebase:firebase-auth:16.1.0'
     implementation "com.airbnb.android:lottie:2.6.0-beta19"
+    implementation 'de.hdodenhof:circleimageview:2.0.0'
     //alert
     implementation 'org.jetbrains.anko:anko-commons:0.10.1'
 

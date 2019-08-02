@@ -41,4 +41,10 @@ object Utils {
         return true
 
     }
+
+    fun getBluetoothState(): Boolean {
+        val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+        setBlueToothState(BluetoothAdapter.getDefaultAdapter().state)
+        return bluetoothAdapter.isEnabled
+    }
 }

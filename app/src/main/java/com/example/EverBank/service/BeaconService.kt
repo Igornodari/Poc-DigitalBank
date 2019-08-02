@@ -22,7 +22,6 @@ import org.altbeacon.beacon.*
 import org.altbeacon.beacon.service.ArmaRssiFilter
 
 
-@Suppress("DEPRECATION")
 open class BeaconService : Service(), BeaconConsumer {
 
     private var beaconManager: BeaconManager? = null
@@ -33,15 +32,13 @@ open class BeaconService : Service(), BeaconConsumer {
     private var bluetoothCurrentlyState: Int = -1
     private var closestBeacon: Beacon? = null
 
-
     override fun onCreate() {
         super.onCreate()
 
         bluetoothCurrentlyState = BluetoothAdapter.getDefaultAdapter().state
 
         if (bluetoothCurrentlyState == BluetoothAdapter.STATE_TURNING_OFF ||
-            bluetoothCurrentlyState == BluetoothAdapter.STATE_OFF
-        ) {
+            bluetoothCurrentlyState == BluetoothAdapter.STATE_OFF) {
 
             intent = Intent(applicationContext, BluetoothReceiver::class.java)
             intent.putExtra(Utils.blueToothStateConstant, BluetoothAdapter.getDefaultAdapter().state)
@@ -51,6 +48,9 @@ open class BeaconService : Service(), BeaconConsumer {
         BeaconManager.setRssiFilterImplClass(ArmaRssiFilter::class.java)
         this.beaconManager = BeaconManager.getInstanceForApplication(this)
         this.beaconManager!!.beaconParsers.add(BeaconParser().setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24"))
+        this.beaconManager!!.beaconParsers.add(BeaconParser().setBeaconLayout("x,s:0-1=feaa,m:2-2=20,d:3-3,d:4-5,d:6-7,d:8-11,d:12-15"))
+        this.beaconManager!!.beaconParsers.add(BeaconParser().setBeaconLayout("s:0-1=feaa,m:2-2=00,p:3-3:-41,i:4-13,i:14-19"))
+        this.beaconManager!!.beaconParsers.add(BeaconParser().setBeaconLayout("s:0-1=feaa,m:2-2=10,p:3-3:-41,i:4-20v"))
 
         beaconManager!!.foregroundScanPeriod = 10000
         beaconManager!!.foregroundBetweenScanPeriod = 10000
@@ -108,8 +108,9 @@ open class BeaconService : Service(), BeaconConsumer {
     override fun onBeaconServiceConnect() {
 
         try {
-            beaconManager!!.startMonitoringBeaconsInRegion(myRegion!!)
             beaconManager!!.stopMonitoringBeaconsInRegion(myRegion!!)
+            beaconManager!!.startMonitoringBeaconsInRegion(myRegion!!)
+
         } catch (e: RemoteException) {
             e.printStackTrace()
         }

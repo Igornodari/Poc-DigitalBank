@@ -1,5 +1,6 @@
 package com.example.EverBank.view
 
+import android.annotation.TargetApi
 import android.bluetooth.BluetoothAdapter
 import android.content.Context
 import android.content.Intent
@@ -11,8 +12,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.example.EverBank.service.BluetoothReceiver
+import com.example.EverBank.utils.User
 import com.example.EverBank.utils.UserInput
 import com.example.EverBank.utils.Utils
+import com.example.EverBank.utils.Utils.getBlueToothState
+import com.example.EverBank.utils.Utils.getBluetoothState
 import com.example.EverBank.utils.Utils.setBluetooth
 import com.example.EverBank.viewModels.Autentication
 import com.example.poceveris_beacon.R
@@ -27,26 +32,26 @@ open class LoginActivity : AppCompatActivity() {
     private var login: String? = null
     private var pass: String? = null
 
+    private var isServiceStopped: Boolean = false
     private lateinit var userInput: UserInput
     private var autentication: Autentication? = null
-    val mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+
     var fbData: FirebaseDatabase? = FirebaseDatabase.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        iniciarAcao()
+
+        iniciarAcao();
     }
 
     private fun iniciarAcao() {
-
         getLogineSenha()
         goCadastro()
         goReset()
 
-        // Desativar bluetooth
-        if (!mBluetoothAdapter.isEnabled) {
-            mBluetoothAdapter.enable()
+        if (!getBluetoothState()) {
+            setBluetooth(true)
         }
     }
 
@@ -87,12 +92,20 @@ open class LoginActivity : AppCompatActivity() {
         autentication = Autentication()
         if (!autentication!!.autFormat(email, pass, this)) {
             val intent = Intent(this, BeaconActivity::class.java)
+            val beaconMonitoring = Intent(this, BluetoothReceiver::class.java)
+
             verifyUserInDatabase(email, object : Callback {
                 override fun onVerifiedUserData(isVerified: Boolean) {
                     if (isVerified) {
 
-                        if (!mBluetoothAdapter.isEnabled) {
-                            mBluetoothAdapter.enable()
+                        if (!getBluetoothState()) {
+                            setBluetooth(true)
+                            isServiceStopped = false
+
+                            beaconMonitoring.putExtra(Utils.blueToothStateConstant, getBlueToothState())
+                            startService(beaconMonitoring)
+                            sendBroadcast(beaconMonitoring)
+
                         }
 
                         intent.putExtra("email", email)
@@ -111,6 +124,7 @@ open class LoginActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun verifyUserInDatabase(mail: String, callback: Callback) {
         val mailEncoded = Utils.encoderBase64(mail.trim()).replace("\n", "")
+
         val databaseReference = fbData!!.reference.child("Usuarios").child(mailEncoded)
 
         databaseReference.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -120,7 +134,7 @@ open class LoginActivity : AppCompatActivity() {
             }
 
             override fun onDataChange(p0: DataSnapshot) {
-//                val user = p0.getValue(User::class.java)
+                val user = p0.getValue(User::class.java)
                 callback.onVerifiedUserData(true)
             }
         })

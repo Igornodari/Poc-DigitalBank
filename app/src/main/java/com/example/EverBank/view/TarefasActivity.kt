@@ -19,7 +19,6 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.database.*
 import java.util.*
 
-
 class TarefasActivity : AppCompatActivity() {
 
     private var bluetoothReceiver: BluetoothReceiver? = null
@@ -27,7 +26,7 @@ class TarefasActivity : AppCompatActivity() {
     lateinit var context: Context
     var keys: Keys = Keys()
     private lateinit var adapter: MyListAdapter
-    internal var TAG = TarefasActivity::class.java.simpleName
+    private var TAG = TarefasActivity::class.java.simpleName
     private var firebaseDatabase: DatabaseReference = FirebaseDatabase.getInstance().reference
     private var keysReference: DatabaseReference? = firebaseDatabase
 
@@ -63,15 +62,14 @@ class TarefasActivity : AppCompatActivity() {
                                         override fun onDataChange(p0: DataSnapshot) {
                                             if (p0.value == null) {
                                                 keysReference!!.setValue(keys.senhaSaque + 1)
-                                            }else{
+                                            } else {
                                                 keys = Keys()
                                                 var value: Long = p0.value as Long
                                                 value += 1
                                                 keys.senhaSaque += value
                                                 keysReference!!.setValue(keys.senhaSaque)
                                             }
-
-                                             nextAct(position, keys.senhaSaque)
+                                            nextAct(position, keys.senhaSaque)
                                         }
                                     })
                                 }
@@ -100,7 +98,7 @@ class TarefasActivity : AppCompatActivity() {
                                     })
                                 }
 
-                                2 ->{
+                                2 -> {
 
                                     keysReference = firebaseDatabase.child("Keys").child("senhaPagarContas")
                                     keysReference!!.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -117,7 +115,7 @@ class TarefasActivity : AppCompatActivity() {
                                             keys = Keys()
                                             var value: Long = p0.value as Long
                                             value += 1
-                                            keys.senhaContas+= value
+                                            keys.senhaContas += value
                                             keysReference!!.setValue(keys.senhaContas)
 
                                             nextAct(position, keys.senhaContas)
@@ -135,11 +133,11 @@ class TarefasActivity : AppCompatActivity() {
 
                                             if (p0.value == null) {
                                                 keysReference!!.setValue(keys.senhaGerente + 1)
-                                            }else{
+                                            } else {
                                                 keys = Keys()
                                                 var value: Long = p0.value as Long
                                                 value += 1
-                                                keys.senhaGerente+= value
+                                                keys.senhaGerente += value
                                                 keysReference!!.setValue(keys.senhaGerente)
                                             }
 
@@ -160,11 +158,11 @@ class TarefasActivity : AppCompatActivity() {
 
                                             if (p0.value == null) {
                                                 keysReference!!.setValue(keys.senhaInfo + 1)
-                                            }else{
+                                            } else {
                                                 keys = Keys()
                                                 var value: Long = p0.value as Long
                                                 value += 1
-                                                keys.senhaInfo+= value
+                                                keys.senhaInfo += value
                                                 keysReference!!.setValue(keys.senhaInfo)
                                             }
                                             nextAct(position, keys.senhaInfo)
@@ -184,11 +182,11 @@ class TarefasActivity : AppCompatActivity() {
 
                                             if (p0.value == null) {
                                                 keysReference!!.setValue(keys.senhaOutros + 1)
-                                            }else{
+                                            } else {
                                                 keys = Keys()
                                                 var value: Long = p0.value as Long
                                                 value += 1
-                                                keys.senhaOutros+= value
+                                                keys.senhaOutros += value
                                                 keysReference!!.setValue(keys.senhaOutros)
                                             }
 
@@ -201,7 +199,7 @@ class TarefasActivity : AppCompatActivity() {
                         }
 
                         override fun onItemLongClick(view: View?, position: Int) {
-                            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                            return
                         }
                     })
             )
@@ -216,45 +214,41 @@ class TarefasActivity : AppCompatActivity() {
         }
     }
 
-private fun listPopulate(): ArrayList<Tarefas> {
-    val versionList = ArrayList<Tarefas>()
-    versionList.add(Tarefas(drawable.iconos_cs5_10, "Saque"))
-    versionList.add(Tarefas(drawable.iconos_cs5_16, "Deposito"))
-    versionList.add(Tarefas(drawable.iconos_cs5_125, "Pagar Contas"))
-    versionList.add(Tarefas(drawable.iconos_cs5_40_2, "Falar com Gerente"))
-    versionList.add(Tarefas(drawable.iconos_cs5_51, "Informações"))
-    versionList.add(Tarefas(drawable.iconos_cs5_40, "Outros"))
+    private fun listPopulate(): ArrayList<Tarefas> {
+        val versionList = ArrayList<Tarefas>()
+        versionList.add(Tarefas(drawable.iconos_cs5_10, "Saque"))
+        versionList.add(Tarefas(drawable.iconos_cs5_16, "Deposito"))
+        versionList.add(Tarefas(drawable.iconos_cs5_125, "Pagar Contas"))
+        versionList.add(Tarefas(drawable.iconos_cs5_40_2, "Falar com Gerente"))
+        versionList.add(Tarefas(drawable.iconos_cs5_51, "Informações"))
+        versionList.add(Tarefas(drawable.iconos_cs5_40, "Outros"))
 
-    return versionList
-}
-
-fun setBluetooth(enable: Boolean): Boolean {
-
-    val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
-    val isEnabled = bluetoothAdapter.isEnabled
-
-    if (enable && !isEnabled) {
-        return bluetoothAdapter.enable()
-    } else if (!enable && isEnabled) {
-        return bluetoothAdapter.disable()
+        return versionList
     }
-    return true
+
+    fun setBluetooth(enable: Boolean): Boolean {
+
+        val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+        val isEnabled = bluetoothAdapter.isEnabled
+
+        if (enable && !isEnabled) {
+            return bluetoothAdapter.enable()
+        } else if (!enable && isEnabled) {
+            return bluetoothAdapter.disable()
+        }
+        return true
+    }
+
+    fun getBluetoothState(): Boolean {
+        val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+        Utils.setBlueToothState(BluetoothAdapter.getDefaultAdapter().state)
+        return bluetoothAdapter.isEnabled
+    }
+
+    fun nextAct(position: Int, senha: Long) {
+        intent = Intent(this, RandomKeysActivity::class.java)
+        intent.putExtra("position", position)
+        intent.putExtra("count", senha)
+        startActivity(intent)
+    }
 }
-
-fun getBluetoothState(): Boolean {
-    val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
-    Utils.setBlueToothState(BluetoothAdapter.getDefaultAdapter().state)
-    return bluetoothAdapter.isEnabled
-}
-
-fun nextAct(position: Int, senha: Long) {
-    intent = Intent(this, RandomKeysActivity::class.java)
-    intent.putExtra("position", position)
-    intent.putExtra("count", senha)
-    startActivity(intent)
-}
-}
-
-
-
-

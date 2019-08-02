@@ -6,4 +6,8 @@
         <item name="android:textCursorDrawable">@drawable/act_edt</item>
     </style>
 
+    <style name="StyledTilEditTextTheme">
+        <item name="colorControlNormal">@color/verdeEveri</item> // Cor padrão da linha
+    </style>
+
 </resources>
