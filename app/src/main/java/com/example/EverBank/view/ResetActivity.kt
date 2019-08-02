@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 class ResetActivity : AppCompatActivity() {
 
-    private val email: AutoCompleteTextView? = null
+    private val email: AutoCompleteTextView?= null
     private var firebaseAuth: FirebaseAuth? = null
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
